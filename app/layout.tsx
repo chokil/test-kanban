@@ -1,12 +1,27 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import WebVitalsReporter from '@/components/WebVitalsReporter'
+import PWARegister from '@/components/PWARegister'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Modern Web Experience',
-  description: 'A cutting-edge website built with the latest technologies',
+  description: '最高の技術を使った最高のWebサイト',
+  manifest: '/manifest.json',
+  openGraph: {
+    title: 'Modern Web Experience',
+    description: '最高の技術を使った最高のWebサイト',
+    type: 'website',
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#000000',
 }
 
 export default function RootLayout({
@@ -16,7 +31,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <WebVitalsReporter />
+        <PWARegister />
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
+          メインコンテンツへスキップ
+        </a>
+        {children}
+      </body>
     </html>
   )
 }

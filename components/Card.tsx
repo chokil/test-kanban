@@ -3,7 +3,7 @@
 import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-interface CardProps extends Omit<HTMLMotionProps<"div">, "children"> {
+interface CardProps extends Omit<HTMLMotionProps<"div">, "whileHover" | "transition"> {
   hover?: boolean
   children: React.ReactNode
 }
