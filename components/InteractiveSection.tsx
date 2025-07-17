@@ -5,21 +5,26 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "./Button"
 import { Card } from "./Card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Testimonial } from "@/lib/types"
+import { slideInFromRight } from "@/lib/animations"
 
-const testimonials = [
+const testimonialData: Testimonial[] = [
   {
+    id: 1,
     name: "田中 太郎",
     role: "プロダクトマネージャー",
     content: "この技術スタックは本当に素晴らしい。開発速度が格段に向上しました。",
     avatar: "🧑‍💼",
   },
   {
+    id: 2,
     name: "佐藤 花子",
     role: "フロントエンドエンジニア",
     content: "TypeScriptとTailwindの組み合わせは最高です。保守性も抜群。",
     avatar: "👩‍💻",
   },
   {
+    id: 3,
     name: "鈴木 一郎",
     role: "UXデザイナー",
     content: "美しいUIと優れたパフォーマンス。ユーザー体験が劇的に改善されました。",
@@ -28,14 +33,14 @@ const testimonials = [
 ]
 
 export function InteractiveSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0)
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonialData.length)
   }
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setCurrentTestimonialIndex((prev) => (prev - 1 + testimonialData.length) % testimonialData.length)
   }
 
   return (
@@ -56,17 +61,18 @@ export function InteractiveSection() {
       <div className="relative max-w-4xl mx-auto">
         <AnimatePresence mode="wait">
           <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
+            key={currentTestimonialIndex}
+            variants={slideInFromRight}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             transition={{ duration: 0.3 }}
           >
             <Card className="p-8 text-center">
-              <div className="text-6xl mb-4">{testimonials[currentIndex].avatar}</div>
-              <p className="text-lg mb-6 italic">"{testimonials[currentIndex].content}"</p>
-              <h3 className="font-semibold text-xl">{testimonials[currentIndex].name}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{testimonials[currentIndex].role}</p>
+              <div className="text-6xl mb-4">{testimonialData[currentTestimonialIndex].avatar}</div>
+              <p className="text-lg mb-6 italic">&ldquo;{testimonialData[currentTestimonialIndex].content}&rdquo;</p>
+              <h3 className="font-semibold text-xl">{testimonialData[currentTestimonialIndex].name}</h3>
+              <p className="text-gray-600 dark:text-gray-400">{testimonialData[currentTestimonialIndex].role}</p>
             </Card>
           </motion.div>
         </AnimatePresence>
@@ -77,16 +83,17 @@ export function InteractiveSection() {
             variant="outline"
             onClick={prevTestimonial}
             className="rounded-full"
+            aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
           
           <div className="flex gap-2">
-            {testimonials.map((_, index) => (
+            {testimonialData.map((_, index) => (
               <div
                 key={index}
                 className={`h-2 w-2 rounded-full transition-colors ${
-                  index === currentIndex
+                  index === currentTestimonialIndex
                     ? "bg-purple-600"
                     : "bg-gray-300 dark:bg-gray-600"
                 }`}
@@ -99,6 +106,7 @@ export function InteractiveSection() {
             variant="outline"
             onClick={nextTestimonial}
             className="rounded-full"
+            aria-label="Next testimonial"
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
