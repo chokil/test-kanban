@@ -64,7 +64,7 @@ export function InteractiveSection() {
           >
             <Card className="p-8 text-center">
               <div className="text-6xl mb-4">{testimonials[currentIndex].avatar}</div>
-              <p className="text-lg mb-6 italic">"{testimonials[currentIndex].content}"</p>
+              <p className="text-lg mb-6 italic">&ldquo;{testimonials[currentIndex].content}&rdquo;</p>
               <h3 className="font-semibold text-xl">{testimonials[currentIndex].name}</h3>
               <p className="text-gray-600 dark:text-gray-400">{testimonials[currentIndex].role}</p>
             </Card>
