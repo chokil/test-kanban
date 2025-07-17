@@ -12,13 +12,13 @@
 ### 優先度: 高
 
 #### 1. 技術スタック選定
-- [x] フロントエンド技術の調査・選定
-  - React/Next.js vs Vue/Nuxt vs Svelte/SvelteKit ✓ Next.js選定済み
-  - TypeScript導入 ✓ 導入済み
-  - 状態管理 (Redux Toolkit, Zustand, Jotai等) ※必要に応じて追加
-  - UIライブラリ (Tailwind CSS, Material-UI, Chakra UI等) ✓ Tailwind CSS導入済み
-- [x] バックエンド技術の調査・選定
-  - Node.js (Express, Fastify, NestJS) ✓ Next.js APIルート使用
+- [ ] フロントエンド技術の調査・選定
+  - React/Next.js vs Vue/Nuxt vs Svelte/SvelteKit
+  - TypeScript導入
+  - 状態管理 (Redux Toolkit, Zustand, Jotai等)
+  - UIライブラリ (Tailwind CSS, Material-UI, Chakra UI等)
+- [ ] バックエンド技術の調査・選定
+  - Node.js (Express, Fastify, NestJS)
   - Python (FastAPI, Django)
   - Go (Gin, Echo, Fiber)
   - Rust (Actix, Rocket)
@@ -27,54 +27,54 @@
   - MongoDB vs DynamoDB
   - Redis/Memcached
   - Prisma/TypeORM/Drizzle
-- [x] インフラ・ホスティング選定
-  - Vercel/Netlify ✓ Vercel選定（Next.jsとの統合）
+- [ ] インフラ・ホスティング選定
+  - Vercel/Netlify
   - AWS/GCP/Azure
   - Docker/Kubernetes
   - CDN戦略
 
 #### 2. パフォーマンス要件定義
-- [x] Core Web Vitals目標値設定
-  - LCP (Largest Contentful Paint): < 2.5秒 ✓ Web Vitals監視実装済み
-  - FID (First Input Delay): < 100ms ✓ INP (Interaction to Next Paint)で監視
-  - CLS (Cumulative Layout Shift): < 0.1 ✓ 監視実装済み
-- [x] レスポンスタイム目標
-  - API応答時間: < 200ms (95パーセンタイル) ✓ Next.js APIルート最適化
-  - ページロード時間: < 3秒 ✓ 画像最適化、圧縮有効化
-- [x] 同時接続数・スループット
-  - 同時接続数: 10,000+ ✓ Vercelのインフラで対応
-  - リクエスト/秒: 1,000+ ✓ CDNとキャッシュ戦略で対応
+- [ ] Core Web Vitals目標値設定
+  - LCP (Largest Contentful Paint): < 2.5秒
+  - FID (First Input Delay): < 100ms
+  - CLS (Cumulative Layout Shift): < 0.1
+- [ ] レスポンスタイム目標
+  - API応答時間: < 200ms (95パーセンタイル)
+  - ページロード時間: < 3秒
+- [ ] 同時接続数・スループット
+  - 同時接続数: 10,000+
+  - リクエスト/秒: 1,000+
 
 #### 3. セキュリティ要件定義
 - [ ] 認証・認可
-  - JWT vs セッション ※将来実装予定
-  - OAuth2.0/OIDC統合 ※将来実装予定
-  - MFA (多要素認証) ※将来実装予定
-  - RBAC (ロールベースアクセス制御) ※将来実装予定
-- [x] データ保護
-  - HTTPS必須 ✓ Vercelで自動設定
-  - データ暗号化 (保存時・転送時) ✓ TLS/HTTPS対応
-  - PII (個人識別情報) の取り扱い ✓ ガイドライン策定
-- [x] 脆弱性対策
-  - OWASP Top 10対策 ✓ セキュリティヘッダー実装
-  - CSP (Content Security Policy) ✓ middleware.tsで実装
-  - Rate Limiting ✓ rate-limit.tsで実装
-  - DDoS対策 ✓ Vercelのインフラで対応
+  - JWT vs セッション
+  - OAuth2.0/OIDC統合
+  - MFA (多要素認証)
+  - RBAC (ロールベースアクセス制御)
+- [ ] データ保護
+  - HTTPS必須
+  - データ暗号化 (保存時・転送時)
+  - PII (個人識別情報) の取り扱い
+- [ ] 脆弱性対策
+  - OWASP Top 10対策
+  - CSP (Content Security Policy)
+  - Rate Limiting
+  - DDoS対策
 
 #### 4. UI/UX要件定義
-- [x] レスポンシブデザイン
-  - モバイルファースト設計 ✓ Tailwind CSSで実装
-  - ブレークポイント定義 ✓ sm/md/lg/xl対応
-  - タッチ操作最適化 ✓ タッチ対応UI実装
-- [x] アクセシビリティ
-  - WCAG 2.1 AA準拠 ✓ 基本要件実装
-  - スクリーンリーダー対応 ✓ sr-onlyクラス、ARIA属性
-  - キーボードナビゲーション ✓ フォーカス管理実装
-- [x] ユーザビリティ
-  - 直感的なナビゲーション ✓ ナビゲーションコンポーネント実装
-  - エラーハンドリング ✓ エラー境界とフォールバック
-  - ローディング状態の表示 ✓ アニメーション実装
-  - オフライン対応 (PWA) ✓ Service Worker、manifest.json実装
+- [ ] レスポンシブデザイン
+  - モバイルファースト設計
+  - ブレークポイント定義
+  - タッチ操作最適化
+- [ ] アクセシビリティ
+  - WCAG 2.1 AA準拠
+  - スクリーンリーダー対応
+  - キーボードナビゲーション
+- [ ] ユーザビリティ
+  - 直感的なナビゲーション
+  - エラーハンドリング
+  - ローディング状態の表示
+  - オフライン対応 (PWA)
 
 ### 優先度: 中
 

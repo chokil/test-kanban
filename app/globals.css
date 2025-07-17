@@ -2,61 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* アクセシビリティ対応 */
-@layer utilities {
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  .not-sr-only {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-}
-
-/* キーボードナビゲーション時のフォーカス表示 */
-body:not(.keyboard-navigation) *:focus {
-  outline: none;
-}
-
-body.keyboard-navigation *:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-/* 高コントラストモード対応 */
-@media (prefers-contrast: high) {
-  * {
-    border-color: currentColor !important;
-  }
-}
-
-/* 動きを減らす設定への対応 */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -69,7 +14,6 @@ body.keyboard-navigation *:focus {
     --accent-foreground: 240 5.9% 10%;
     --border: 240 5.9% 90%;
     --radius: 0.5rem;
-    --border: 240 5.9% 90%;
   }
 
   .dark {
@@ -92,20 +36,5 @@ body.keyboard-navigation *:focus {
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}
-
-@layer utilities {
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 8s linear infinite;
-  }
-  
-  .animation-delay-2000 {
-    animation-delay: 2000ms;
-  }
-  
-  .animation-delay-4000 {
-    animation-delay: 4000ms;
   }
 }

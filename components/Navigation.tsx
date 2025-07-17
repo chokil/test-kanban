@@ -4,9 +4,6 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "./Button"
 import { Menu, X } from "lucide-react"
-import { SCROLL_THRESHOLD, Z_INDEX, GRADIENTS } from "@/lib/constants"
-import { fadeInUp } from "@/lib/animations"
-import { NavItem } from "@/lib/types"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -14,35 +11,29 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
+      setIsScrolled(window.scrollY > 10)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems: NavItem[] = [
-    { name: "ホーム", href: "#home" },
-    { name: "機能", href: "#features" },
-    { name: "価格", href: "#pricing" },
-    { name: "お問い合わせ", href: "#contact" },
-  ]
+  const navItems = ["ホーム", "機能", "価格", "お問い合わせ"]
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg"
           : "bg-transparent"
       }`}
-      style={{ zIndex: Z_INDEX.navigation }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <span className={`text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${GRADIENTS.primary}`}>
+            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
               ModernWeb
             </span>
           </div>
@@ -50,11 +41,11 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
-                key={item.name}
-                href={item.href}
+                key={item}
+                href="#"
                 className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
               >
-                {item.name}
+                {item}
               </a>
             ))}
             <Button size="sm">ログイン</Button>
@@ -64,8 +55,6 @@ export function Navigation() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-700 dark:text-gray-300"
-              aria-label="Toggle mobile menu"
-              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
@@ -75,19 +64,18 @@ export function Navigation() {
 
       {isMobileMenuOpen && (
         <motion.div
-          variants={fadeInUp}
-          initial="initial"
-          animate="animate"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
           className="md:hidden bg-white dark:bg-gray-900 shadow-lg"
         >
           <div className="px-4 pt-2 pb-3 space-y-2">
             {navItems.map((item) => (
               <a
-                key={item.name}
-                href={item.href}
+                key={item}
+                href="#"
                 className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
               >
-                {item.name}
+                {item}
               </a>
             ))}
             <Button size="sm" className="w-full">ログイン</Button>
