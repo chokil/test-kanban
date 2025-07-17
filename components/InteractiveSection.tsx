@@ -69,10 +69,10 @@ export function InteractiveSection() {
             transition={{ duration: 0.3 }}
           >
             <Card className="p-8 text-center">
-              <div className="text-6xl mb-4">{testimonials[currentIndex].avatar}</div>
-              <p className="text-lg mb-6 italic">"{testimonials[currentIndex].content}"</p>
-              <h3 className="font-semibold text-xl">{testimonials[currentIndex].name}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{testimonials[currentIndex].role}</p>
+              <div className="text-6xl mb-4">{testimonialData[currentTestimonialIndex].avatar}</div>
+              <p className="text-lg mb-6 italic">&ldquo;{testimonialData[currentTestimonialIndex].content}&rdquo;</p>
+              <h3 className="font-semibold text-xl">{testimonialData[currentTestimonialIndex].name}</h3>
+              <p className="text-gray-600 dark:text-gray-400">{testimonialData[currentTestimonialIndex].role}</p>
             </Card>
           </motion.div>
         </AnimatePresence>
