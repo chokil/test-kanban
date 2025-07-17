@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion"
 import { Button } from "./Button"
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight, Sparkles, Gamepad2 } from "lucide-react"
 import { ANIMATION_DELAY, GRADIENTS } from "@/lib/constants"
 import { fadeInUp } from "@/lib/animations"
+import Link from "next/link"
 
 export function Hero() {
   return (
@@ -44,6 +45,13 @@ export function Hero() {
             はじめる
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
+          <Link href="/game">
+            <Button size="lg" variant="outline" className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 hover:from-purple-700 hover:to-pink-700">
+              <Gamepad2 className="mr-2 h-4 w-4" />
+              ゲームで遊ぶ
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
           <Button size="lg" variant="outline">
             詳しく見る
           </Button>
