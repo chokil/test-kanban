@@ -3,6 +3,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import WebVitalsReporter from '@/components/WebVitalsReporter'
 import PWARegister from '@/components/PWARegister'
+import dynamic from 'next/dynamic'
+
+const CursorEffect = dynamic(() => import('@/components/CursorEffect'), {
+  ssr: false,
+})
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +39,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <WebVitalsReporter />
         <PWARegister />
+        <CursorEffect />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
           メインコンテンツへスキップ
         </a>

@@ -7,6 +7,15 @@ import { Stats } from "@/components/Stats"
 import { Gallery } from "@/components/Gallery"
 import { Testimonials } from "@/components/Testimonials"
 import { Footer } from "@/components/Footer"
+import dynamic from 'next/dynamic'
+
+const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'), {
+  ssr: false,
+})
+
+const ParallaxSection = dynamic(() => import('@/components/ParallaxSection'), {
+  ssr: false,
+})
 
 export default function Home() {
   return (
@@ -15,6 +24,8 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <Features />
+        <ExperienceSection />
+        <ParallaxSection />
         <Stats />
         <Timeline />
         <Gallery />
