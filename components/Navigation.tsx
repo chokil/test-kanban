@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "./Button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Gamepad2 } from "lucide-react"
+import Link from "next/link"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -48,6 +49,12 @@ export function Navigation() {
                 {item}
               </a>
             ))}
+            <Link href="/game">
+              <Button size="sm" variant="outline" className="flex items-center gap-2">
+                <Gamepad2 className="h-4 w-4" />
+                ゲーム
+              </Button>
+            </Link>
             <Button size="sm">ログイン</Button>
           </div>
 
@@ -78,6 +85,12 @@ export function Navigation() {
                 {item}
               </a>
             ))}
+            <Link href="/game" className="block">
+              <Button size="sm" variant="outline" className="w-full flex items-center justify-center gap-2">
+                <Gamepad2 className="h-4 w-4" />
+                ゲーム
+              </Button>
+            </Link>
             <Button size="sm" className="w-full">ログイン</Button>
           </div>
         </motion.div>
