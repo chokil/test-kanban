@@ -23,6 +23,7 @@ const config: Config = {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
+        border: 'hsl(var(--border))',
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',
