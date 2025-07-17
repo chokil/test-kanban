@@ -69,6 +69,7 @@ body.keyboard-navigation *:focus {
     --accent-foreground: 240 5.9% 10%;
     --border: 240 5.9% 90%;
     --radius: 0.5rem;
+    --border: 240 5.9% 90%;
   }
 
   .dark {
@@ -91,5 +92,20 @@ body.keyboard-navigation *:focus {
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s linear infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2000ms;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4000ms;
   }
 }

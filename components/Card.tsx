@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 
 interface CardProps extends Omit<HTMLMotionProps<"div">, "whileHover" | "transition"> {
   hover?: boolean
+  children: React.ReactNode
 }
 
 export function Card({ className, hover = true, children, ...props }: CardProps) {
