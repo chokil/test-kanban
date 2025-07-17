@@ -3,6 +3,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import WebVitalsReporter from '@/components/WebVitalsReporter'
 import PWARegister from '@/components/PWARegister'
+import { ParticleBackground } from '@/components/ParticleBackground'
+import { AIChatbot } from '@/components/AIChatbot'
+import { CollaborativeWhiteboard } from '@/components/CollaborativeWhiteboard'
+import { VoiceNavigation } from '@/components/VoiceNavigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,12 +36,16 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
+        <ParticleBackground />
         <WebVitalsReporter />
         <PWARegister />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
           メインコンテンツへスキップ
         </a>
         {children}
+        <AIChatbot />
+        <CollaborativeWhiteboard />
+        <VoiceNavigation />
       </body>
     </html>
   )
