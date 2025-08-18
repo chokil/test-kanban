@@ -5,32 +5,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "./Button"
 import { Card } from "./Card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Testimonial } from "@/lib/types"
 import { slideInFromRight } from "@/lib/animations"
-
-const testimonialData: Testimonial[] = [
-  {
-    id: 1,
-    name: "田中 太郎",
-    role: "プロダクトマネージャー",
-    content: "この技術スタックは本当に素晴らしい。開発速度が格段に向上しました。",
-    avatar: "🧑‍💼",
-  },
-  {
-    id: 2,
-    name: "佐藤 花子",
-    role: "フロントエンドエンジニア",
-    content: "TypeScriptとTailwindの組み合わせは最高です。保守性も抜群。",
-    avatar: "👩‍💻",
-  },
-  {
-    id: 3,
-    name: "鈴木 一郎",
-    role: "UXデザイナー",
-    content: "美しいUIと優れたパフォーマンス。ユーザー体験が劇的に改善されました。",
-    avatar: "🧑‍🎨",
-  },
-]
+import { testimonialData } from "@/lib/data/testimonials"
 
 export function InteractiveSection() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0)
@@ -69,10 +45,10 @@ export function InteractiveSection() {
             transition={{ duration: 0.3 }}
           >
             <Card className="p-8 text-center">
-              <div className="text-6xl mb-4">{testimonials[currentIndex].avatar}</div>
-              <p className="text-lg mb-6 italic">"{testimonials[currentIndex].content}"</p>
-              <h3 className="font-semibold text-xl">{testimonials[currentIndex].name}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{testimonials[currentIndex].role}</p>
+              <div className="text-6xl mb-4">{testimonialData[currentTestimonialIndex].avatar}</div>
+              <p className="text-lg mb-6 italic">&ldquo;{testimonialData[currentTestimonialIndex].content}&rdquo;</p>
+              <h3 className="font-semibold text-xl">{testimonialData[currentTestimonialIndex].name}</h3>
+              <p className="text-gray-600 dark:text-gray-400">{testimonialData[currentTestimonialIndex].role}</p>
             </Card>
           </motion.div>
         </AnimatePresence>

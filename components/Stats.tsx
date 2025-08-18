@@ -4,13 +4,7 @@ import { useEffect, useState } from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { ScrollAnimation } from "./ScrollAnimation"
-
-const stats = [
-  { label: "アクティブユーザー", value: 1000000, suffix: "+" },
-  { label: "満足度", value: 98, suffix: "%" },
-  { label: "処理速度向上", value: 300, suffix: "%" },
-  { label: "グローバル展開国数", value: 50, suffix: "ヶ国" }
-]
+import { statsData } from "@/lib/data/stats"
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   const [displayValue, setDisplayValue] = useState(0)
@@ -57,7 +51,7 @@ export function Stats() {
         </ScrollAnimation>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
+          {statsData.map((stat, index) => (
             <ScrollAnimation key={index} delay={index * 0.1}>
               <motion.div
                 className="text-center p-8"

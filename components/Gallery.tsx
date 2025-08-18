@@ -3,45 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { ScrollAnimation } from "./ScrollAnimation"
-
-const galleryItems = [
-  {
-    id: 1,
-    title: "革新的なデザイン",
-    description: "ユーザー中心の美しいインターフェース",
-    gradient: "from-purple-400 to-pink-400"
-  },
-  {
-    id: 2,
-    title: "高速パフォーマンス",
-    description: "瞬時に反応する快適な操作性",
-    gradient: "from-blue-400 to-cyan-400"
-  },
-  {
-    id: 3,
-    title: "スケーラブル設計",
-    description: "成長に合わせて拡張可能",
-    gradient: "from-green-400 to-emerald-400"
-  },
-  {
-    id: 4,
-    title: "セキュアな環境",
-    description: "最高水準のセキュリティ",
-    gradient: "from-orange-400 to-red-400"
-  },
-  {
-    id: 5,
-    title: "AIの活用",
-    description: "次世代の知的体験",
-    gradient: "from-indigo-400 to-purple-400"
-  },
-  {
-    id: 6,
-    title: "グローバル対応",
-    description: "世界中のユーザーへ",
-    gradient: "from-yellow-400 to-orange-400"
-  }
-]
+import { SectionContainer } from "./SectionContainer"
+import { galleryData } from "@/lib/data/gallery"
 
 export function Gallery() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -55,15 +18,10 @@ export function Gallery() {
 
   return (
     <section ref={containerRef} className="py-20 overflow-hidden bg-gray-50">
-      <div className="container mx-auto px-4">
-        <ScrollAnimation>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-            体験ギャラリー
-          </h2>
-        </ScrollAnimation>
+      <SectionContainer title="体験ギャラリー" subtitle="革新的な機能をご覧ください">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {galleryItems.map((item, index) => (
+          {galleryData.map((item, index) => (
             <motion.div
               key={item.id}
               style={{ y: index % 2 === 0 ? y1 : y2 }}
@@ -91,7 +49,7 @@ export function Gallery() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </SectionContainer>
     </section>
   )
 }

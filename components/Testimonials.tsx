@@ -4,43 +4,17 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Star } from "lucide-react"
 import { ScrollAnimation } from "./ScrollAnimation"
-
-const testimonials = [
-  {
-    id: 1,
-    name: "田中 太郎",
-    role: "スタートアップCEO",
-    content: "このプラットフォームのおかげで、私たちのビジネスは飛躍的に成長しました。ユーザー体験が素晴らしく、チーム全体の生産性が向上しています。",
-    rating: 5,
-    avatar: "🧑‍💼"
-  },
-  {
-    id: 2,
-    name: "佐藤 花子",
-    role: "デザイナー",
-    content: "直感的なインターフェースと美しいデザインに感動しました。クリエイティブな作業がこれまで以上に楽しくなりました。",
-    rating: 5,
-    avatar: "👩‍🎨"
-  },
-  {
-    id: 3,
-    name: "鈴木 一郎",
-    role: "エンジニア",
-    content: "技術的な観点から見ても、このサイトは最高水準です。パフォーマンスが素晴らしく、開発者として学ぶことがたくさんあります。",
-    rating: 5,
-    avatar: "👨‍💻"
-  }
-]
+import { testimonialData } from "@/lib/data/testimonials"
 
 export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextTestimonial = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialData.length)
   }
 
   const prevTestimonial = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonialData.length) % testimonialData.length)
   }
 
   return (
@@ -64,21 +38,21 @@ export function Testimonials() {
                 className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 md:p-12 rounded-3xl shadow-xl"
               >
                 <div className="flex items-center mb-6">
-                  <div className="text-5xl mr-4">{testimonials[currentIndex].avatar}</div>
+                  <div className="text-5xl mr-4">{testimonialData[currentIndex].avatar}</div>
                   <div>
-                    <h3 className="text-xl font-bold">{testimonials[currentIndex].name}</h3>
-                    <p className="text-gray-600">{testimonials[currentIndex].role}</p>
+                    <h3 className="text-xl font-bold">{testimonialData[currentIndex].name}</h3>
+                    <p className="text-gray-600">{testimonialData[currentIndex].role}</p>
                   </div>
                 </div>
 
                 <div className="flex mb-4">
-                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                  {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
 
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  &ldquo;{testimonials[currentIndex].content}&rdquo;
+                  &ldquo;{testimonialData[currentIndex].content}&rdquo;
                 </p>
               </motion.div>
             </AnimatePresence>
@@ -99,7 +73,7 @@ export function Testimonials() {
           </div>
 
           <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => (
+            {testimonialData.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
