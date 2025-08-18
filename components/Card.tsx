@@ -1,9 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-interface CardProps {
+interface CardProps extends Omit<HTMLMotionProps<"div">, "whileHover" | "transition"> {
+
   hover?: boolean
   children: React.ReactNode
   className?: string

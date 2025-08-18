@@ -23,6 +23,7 @@ export function Navigation() {
   const navItems: NavItem[] = [
     { name: "ホーム", href: "#home" },
     { name: "機能", href: "#features" },
+    { name: "ゲーム", href: "/game" },
     { name: "価格", href: "#pricing" },
     { name: "お問い合わせ", href: "#contact" },
   ]
